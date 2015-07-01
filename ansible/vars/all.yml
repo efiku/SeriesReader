@@ -9,8 +9,8 @@ vagrant_local:
     vm: { base_box: trusty64, hostname: SeriesReader, ip: 192.168.33.100, memory: '2048', sharedfolder: ./, enableWindows: '1', useVagrantCloud: '1', syncType: nfs }
 apache:
     install: '1'
-    docroot: /vagrant/web
-    servername: Series_reader.local
+    docroot: /vagrant/web/
+    servername: series_reader.local
 php:
     install: '1'
     ppa: php5-5.6

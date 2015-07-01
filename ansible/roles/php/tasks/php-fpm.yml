@@ -17,13 +17,3 @@
   lineinfile: dest=/etc/php5/fpm/php.ini
               regexp=';opcache.enable=0'
               line='opcache.enable=1'
-
-- name: enabling display errors
-  lineinfile: dest=/etc/php5/cli/php.ini
-              regexp='display_errors ='
-              line=display_errors = On'
-
-- name: enabling error_reporting
-  lineinfile: dest=/etc/php5/cli/php.ini
-              regexp='error_reporting ='
-              line=error_reporting = E_ALL'
