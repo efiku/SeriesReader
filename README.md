@@ -16,4 +16,4 @@
 
 ### Run
 
-  Go to http://series_reader.local/
+  Go to  [http://series_reader.local/](http://series_reader.local/)

@@ -9,7 +9,24 @@
       "email": "pazdurk@gmail.com"
     }
   ],
-  "require" : {
-    "php" : ">=5.5.9"
+  "require": {
+    "php": ">=5.5.9",
+    "twig/twig": "^2.0@dev",
+    "phpunit/phpunit": "^5.0@dev"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-update-cmd": "make test",
+    "post-package-install": "make test",
+    "post-install-cmd": "make test",
+    "post-create-project-cmd": "make test"
   }
 }
