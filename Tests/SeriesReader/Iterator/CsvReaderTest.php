@@ -52,7 +52,6 @@ class CsvLoaderTest extends \PHPUnit_Framework_TestCase
      */
     public function test_rewind_and_vaild_method(CsvReader $csvReader)
     {
-        ;
         foreach ($csvReader as $data) {
             $current = $csvReader->current()[12];
             if ($current === "905Lordofth") {
