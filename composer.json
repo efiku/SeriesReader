@@ -25,8 +25,6 @@
   },
   "scripts": {
     "post-update-cmd": "make test",
-    "post-package-install": "make test",
     "post-install-cmd": "make test",
-    "post-create-project-cmd": "make test"
   }
 }
