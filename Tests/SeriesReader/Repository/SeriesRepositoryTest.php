@@ -11,6 +11,7 @@ namespace Test\SeriesReader\Repository;
 
 use SeriesReader\Model\Episode;
 use SeriesReader\Repository\SeriesRepository;
+use SeriesReader\Repository\SeriesRepositoryInterface;
 
 /**
  * Class SeriesRepositoryTest
@@ -20,7 +21,7 @@ class SeriesRepositoryTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var SeriesRepository
+     * @var SeriesRepositoryInterface
      */
     private $series;
 
@@ -46,5 +47,6 @@ class SeriesRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $this->series->put(new Episode(1, 87, 25.8, 'title87'));
     }
+
 
 }

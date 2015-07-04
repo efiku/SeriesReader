@@ -33,4 +33,10 @@ interface EpisodeInterface
      * @return string
      */
     public function getTitle();
+
+    /**
+     * Returns episode season.
+     * @return int
+     */
+    public function getSeason();
 }
