@@ -11,21 +11,29 @@ namespace SeriesReader\Model;
 
 use Prophecy\Exception\InvalidArgumentException;
 
+/**
+ * Class Episode
+ * @package SeriesReader\Model
+ */
 class Episode implements EpisodeInterface
 {
     private $number;
     private $rating;
     private $title;
+    private $season;
 
     /**
+     * @param int $season   Episode season
      * @param int $number   Episode number.
      * @param float $rating Episode rating.
      * @param string $title Episode title.
      */
-    public function __construct($number, $rating, $title)
+    public function __construct($season, $number, $rating, $title)
     {
+        $this->check($season);
         $this->check($number);
         $this->check($rating);
+        $this->season = $season;
         $this->number = $number;
         $this->rating = $rating;
         $this->title = $title;
@@ -43,6 +51,14 @@ class Episode implements EpisodeInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeason()
+    {
+        return $this->season;
     }
 
     /**

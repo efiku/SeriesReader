@@ -2,14 +2,19 @@
 
 namespace SeriesReader\Model;
 
+/**
+ * Interface EpisodeInterface
+ * @package SeriesReader\Model
+ */
 interface EpisodeInterface
 {
     /**
+     * @param int $season Episode season
      * @param int $number   Episode number.
      * @param float $rating Episode rating.
      * @param string $title Episode title.
      */
-    public function __construct($number, $rating, $title);
+    public function __construct($season, $number, $rating, $title);
 
     /**
      * Returns episode number.

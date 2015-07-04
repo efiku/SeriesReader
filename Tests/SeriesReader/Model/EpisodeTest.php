@@ -11,6 +11,10 @@ namespace Tests\SeriesReader\Model;
 
 use SeriesReader\Model\Episode;
 
+/**
+ * Class EpisodeTest
+ * @package Tests\SeriesReader\Model
+ */
 class EpisodeTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -21,7 +25,7 @@ class EpisodeTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $episode = new Episode(1, 3.3, 'test');
+        $episode = new Episode(1, 1, 3.3, 'test');
         $this->episode = $episode;
     }
 
@@ -31,7 +35,7 @@ class EpisodeTest extends \PHPUnit_Framework_TestCase
      */
     public function test_it_should_throw_exception_during_insert_bad_episode_number()
     {
-        $episode = new Episode('D', 2, 'test');
+        $episode = new Episode(1, 'D', 2, 'test');
     }
 
     /**
@@ -40,9 +44,17 @@ class EpisodeTest extends \PHPUnit_Framework_TestCase
      */
     public function test_it_should_throw_exception_during_insert_bad_episode_rating()
     {
-        $episode = new Episode(1, 'D', 'test');
+        $episode = new Episode(1, 1, 'D', 'test');
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Only numbers are supported in number and rating parameter
+     */
+    public function test_it_should_throw_exception_during_insert_bad_episode_season()
+    {
+        $episode = new Episode('1+', 1, 1, 'test');
+    }
 
     public function test_it_should_Implement_EpisodeInterface()
     {
@@ -62,5 +74,10 @@ class EpisodeTest extends \PHPUnit_Framework_TestCase
     public function test_should_return_episode_title()
     {
         $this->assertSame('test', $this->episode->getTitle());
+    }
+
+    public function test_should_return_episode_season_number()
+    {
+        $this->assertSame(1, $this->episode->getSeason());
     }
 }
