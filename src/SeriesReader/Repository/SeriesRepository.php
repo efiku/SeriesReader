@@ -62,4 +62,32 @@ class SeriesRepository implements SeriesRepositoryInterface
     {
         return $this->episodesArray;
     }
+
+    /**
+     * Returns best rated episode for specified $season number.
+     *
+     * @param int $season
+     */
+    public function getBestInSeason($season)
+    {
+        // TODO: Implement getBestInSeason() method.
+    }
+
+    /**
+     * Returns best rated season finale episode.
+     */
+    public function getBestSeasonFinale()
+    {
+        // TODO: Implement getBestSeasonFinale() method.
+    }
+
+    /**
+     * Returns array of episodes starting with $letter.
+     *
+     * @param string $letter
+     */
+    public function getByTitleFirstLetter($letter)
+    {
+        // TODO: Implement getByTitleFirstLetter() method.
+    }
 }

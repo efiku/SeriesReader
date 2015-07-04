@@ -35,4 +35,23 @@ interface SeriesRepositoryInterface
      * @return array of Episodes
      */
     public function getEpisodes();
+
+    /**
+     * Returns best rated episode for specified $season number.
+     *
+     * @param int $season
+     */
+    public function getBestInSeason($season);
+
+    /**
+     * Returns best rated season finale episode.
+     */
+    public function getBestSeasonFinale();
+
+    /**
+     * Returns array of episodes starting with $letter.
+     *
+     * @param string $letter
+     */
+    public function getByTitleFirstLetter($letter);
 }
