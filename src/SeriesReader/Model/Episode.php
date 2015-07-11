@@ -8,14 +8,13 @@
 
 namespace SeriesReader\Model;
 
-
 use Prophecy\Exception\InvalidArgumentException;
 
 /**
  * Class Episode
  * @package SeriesReader\Model
  */
-class Episode implements EpisodeInterface
+final class Episode implements EpisodeInterface
 {
     private $number;
     private $rating;
@@ -33,10 +32,10 @@ class Episode implements EpisodeInterface
         $this->check($season);
         $this->check($number);
         $this->check($rating);
-        $this->season = $season;
-        $this->number = $number;
-        $this->rating = $rating;
-        $this->title = $title;
+        $this->season = (int)$season;
+        $this->number = (int)$number;
+        $this->rating = (float)$rating;
+        $this->title = (string)$title;
     }
 
     /**

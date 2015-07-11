@@ -8,7 +8,6 @@
 
 namespace SeriesReader\Iterator;
 
-
 use SeriesReader\Exception\FileNotFound;
 
 class CsvReader implements \Iterator

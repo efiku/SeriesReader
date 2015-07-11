@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<table border=”1”>
+    <tbody>
+    <tr>
+        <th>Best in s05</th>
+        <td>{{ BestInSeason.title }}</td>
+    </tr>
+    <tr>
+        <th>Best season finale</th>
+        <td>{{ BestInAll.title }}</td>
+    </tr>
+    <tr>
+        <th>Starting with P</th>
+        <td>
+            {% if FoundEpisodes %}
+                <ul>
+                    {% for Episode in FoundEpisodes %}
+                        <li>{{ Episode.title }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                Nothing found
+            {% endif %}
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

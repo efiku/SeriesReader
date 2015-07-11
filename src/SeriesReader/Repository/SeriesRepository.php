@@ -8,6 +8,7 @@
 
 namespace SeriesReader\Repository;
 
+use SeriesReader\Model\Episode;
 use SeriesReader\Model\EpisodeInterface;
 
 /**
@@ -22,7 +23,7 @@ class SeriesRepository implements SeriesRepositoryInterface
     /**
      * @param EpisodeInterface $episode
      *
-*@throws \Exception
+     * @throws \Exception
      */
     public function put(EpisodeInterface $episode)
     {
@@ -32,9 +33,8 @@ class SeriesRepository implements SeriesRepositoryInterface
 
     /**
      * @param EpisodeInterface $episode
-
      *
-*@return bool
+     * @return bool
      * @throws \Exception
      */
     public function check(EpisodeInterface $episode)
@@ -42,16 +42,9 @@ class SeriesRepository implements SeriesRepositoryInterface
         if (empty($this->episodesArray)) {
             return true;
         }
-        foreach ($this->episodesArray as $key => $value) {
-            if ($episode->getTitle() === $value->getTitle() &&
-                $episode->getRating() === $value->getRating() &&
-                $episode->getNumber() === $value->getNumber() &&
-                $episode->getSeason() === $value->getSeason()
-            ) {
-                throw new \Exception("Episode already exists!");
-            }
+        if (in_array($episode, $this->episodesArray)) {
+            throw new \Exception("Episode already exists!");
         }
-
         return true;
     }
 
@@ -67,10 +60,42 @@ class SeriesRepository implements SeriesRepositoryInterface
      * Returns best rated episode for specified $season number.
      *
      * @param int $season
+     * @return Episode
+     * @throws \Exception
      */
     public function getBestInSeason($season)
     {
-        // TODO: Implement getBestInSeason() method.
+        if (!array_key_exists($season, $this->episodesArray)) {
+            throw new \Exception("Episode not found!");
+        }
+        $episodes = array_filter($this->episodesArray, function ($episode) use ($season) {
+            if ($episode->getSeason() === $season) {
+                return $episode;
+            }
+            return false;
+        });
+        return $this->getBestRating($episodes);
+    }
+
+    /**
+     * Get best Rating based
+     *
+     * @param array $arrayOfObjects Array of Episode Object
+     * @param bool $single Return as Object
+     *
+     * @return array|Episode
+     */
+    private function getBestRating(array $arrayOfObjects, $single = true)
+    {
+        usort($arrayOfObjects,
+            function ($a, $b) {
+                if ($a->getRating() === $b->getRating()) {
+                    return 0;
+                }
+                return ($a->getRating() > $b->getRating()) ? -1 : 1;
+            }
+        );
+        return ($single) ? $arrayOfObjects[0] : $arrayOfObjects;
     }
 
     /**
@@ -78,16 +103,22 @@ class SeriesRepository implements SeriesRepositoryInterface
      */
     public function getBestSeasonFinale()
     {
-        // TODO: Implement getBestSeasonFinale() method.
+        return $this->getBestRating($this->episodesArray);
     }
 
     /**
      * Returns array of episodes starting with $letter.
      *
      * @param string $letter
+     * @return array
      */
     public function getByTitleFirstLetter($letter)
     {
-        // TODO: Implement getByTitleFirstLetter() method.
+        $foundEpisodes = array_filter($this->episodesArray, function ($episode) use ($letter) {
+            if (preg_match('/(\d+)(' . $letter . ')/s', $episode->getTitle())) {
+                return true;
+            }
+        });
+        return $foundEpisodes;
     }
 }

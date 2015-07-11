@@ -45,7 +45,7 @@ class SeriesRepositoryTest extends \PHPUnit_Framework_TestCase
     public function test_put_season_into_series_repository_but_episode_already_exists()
     {
 
-        $this->series->put(new Episode(1, 87, 25.8, 'title87'));
+        $this->series->put(new Episode(1, 100, 29.7, 'title100'));
     }
 
 
