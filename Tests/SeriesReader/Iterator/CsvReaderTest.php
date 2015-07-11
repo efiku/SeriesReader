@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: efik
- * Date: 01.07.15
- * Time: 21:28
- */
+
 namespace Tests\SeriesReader\Iterator;
 
 use SeriesReader\Iterator\CsvReader;
@@ -13,7 +8,7 @@ class CsvLoaderTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @expectedException \SeriesReader\Exception\FileNotFound
+     * @expectedException \SeriesReader\Exception\FileNotFoundException
      * @expectedExceptionMessage File dada.txt not found!
      */
     public function test_throw_exception_during_file_not_found()
@@ -50,7 +45,7 @@ class CsvLoaderTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends test_when_file_is_found
      */
-    public function test_rewind_and_vaild_method(CsvReader $csvReader)
+    public function test_rewind_and_valid_method(CsvReader $csvReader)
     {
         foreach ($csvReader as $data) {
             $current = $csvReader->current()[12];

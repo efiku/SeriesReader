@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: efik
- * Date: 02.07.15
- * Time: 12:35
- */
 
 namespace SeriesReader\Iterator;
 
-use SeriesReader\Exception\FileNotFound;
+use SeriesReader\Exception\FileNotFoundException;
 
 class CsvReader implements \Iterator
 {
@@ -33,13 +27,13 @@ class CsvReader implements \Iterator
     private $currentElement;
 
     /**
-     * Cumalitve row count of CSV data
+     * Cumulative row count of CSV data
      * @var int
      */
     private $rowCounter;
 
     /**
-     * CSV column delimeter
+     * CSV column delimiter
      * @var string
      */
     private $delimiter;
@@ -49,12 +43,12 @@ class CsvReader implements \Iterator
      * @param $file
      * @param string $delimiter
      *
-     * @throws FileNotFound
+     * @throws FileNotFoundException
      */
     function __construct($file, $delimiter = ',')
     {
         if (!file_exists($file)) {
-            throw new FileNotFound("File $file not found!");
+            throw new FileNotFoundException("File $file not found!");
         }
         $this->filePointer = fopen($file, "rt");
         $this->delimiter = $delimiter;

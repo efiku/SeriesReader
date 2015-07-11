@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: efik
- * Date: 04.07.15
- * Time: 12:24
- */
 
 namespace SeriesReader\Repository;
 
@@ -21,8 +15,8 @@ class SeriesRepository implements SeriesRepositoryInterface
     private $episodesArray;
 
     /**
+     * Put episodes into array
      * @param EpisodeInterface $episode
-     *
      * @throws \Exception
      */
     public function put(EpisodeInterface $episode)
@@ -32,8 +26,8 @@ class SeriesRepository implements SeriesRepositoryInterface
     }
 
     /**
+     * Check if episode already exists
      * @param EpisodeInterface $episode
-     *
      * @return bool
      * @throws \Exception
      */
@@ -49,7 +43,7 @@ class SeriesRepository implements SeriesRepositoryInterface
     }
 
     /**
-     * @return array of Episode
+     * @return Episode[]
      */
     public function getEpisodes()
     {
@@ -80,10 +74,9 @@ class SeriesRepository implements SeriesRepositoryInterface
     /**
      * Get best Rating based
      *
-     * @param array $arrayOfObjects Array of Episode Object
+     * @param array $arrayOfObjects Episode[]
      * @param bool $single Return as Object
-     *
-     * @return array|Episode
+     * @return Episode|Episode[]
      */
     private function getBestRating(array $arrayOfObjects, $single = true)
     {
@@ -100,6 +93,7 @@ class SeriesRepository implements SeriesRepositoryInterface
 
     /**
      * Returns best rated season finale episode.
+     * @return Episode
      */
     public function getBestSeasonFinale()
     {
@@ -110,7 +104,7 @@ class SeriesRepository implements SeriesRepositoryInterface
      * Returns array of episodes starting with $letter.
      *
      * @param string $letter
-     * @return array
+     * @return Episode[]
      */
     public function getByTitleFirstLetter($letter)
     {
@@ -118,6 +112,7 @@ class SeriesRepository implements SeriesRepositoryInterface
             if (preg_match('/(\d+)(' . $letter . ')/s', $episode->getTitle())) {
                 return true;
             }
+            return false;
         });
         return $foundEpisodes;
     }

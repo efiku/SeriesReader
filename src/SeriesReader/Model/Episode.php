@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: efik
- * Date: 04.07.15
- * Time: 00:20
- */
 
 namespace SeriesReader\Model;
-
-use Prophecy\Exception\InvalidArgumentException;
 
 /**
  * Class Episode
@@ -22,8 +14,8 @@ final class Episode implements EpisodeInterface
     private $season;
 
     /**
-     * @param int $season   Episode season
-     * @param int $number   Episode number.
+     * @param int $season Episode season
+     * @param int $number Episode number.
      * @param float $rating Episode rating.
      * @param string $title Episode title.
      */
@@ -39,21 +31,22 @@ final class Episode implements EpisodeInterface
     }
 
     /**
+     * Checks if is numeric
      * @param $number
-     *
      * @return bool
      */
     private function check($number)
     {
         if (!is_numeric($number)) {
-            throw new InvalidArgumentException("Only numbers are supported in number and rating parameter");
+            throw new \InvalidArgumentException("Only numbers are supported in number and rating parameter");
         }
 
         return true;
     }
 
     /**
-     * @return mixed
+     * Get season
+     * @return int
      */
     public function getSeason()
     {

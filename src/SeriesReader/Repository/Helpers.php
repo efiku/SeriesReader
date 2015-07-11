@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: efik
- * Date: 11.07.15
- * Time: 01:48
- */
 
 namespace SeriesReader\Repository;
-
 
 use SeriesReader\Iterator\CsvReader;
 use SeriesReader\Model\Episode;
