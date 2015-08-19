@@ -1,5 +1,9 @@
 # SeriesReader
 
+
+[![Build Status](https://travis-ci.org/efiku/SeriesReader.svg?branch=master)](https://travis-ci.org/efiku/SeriesReader)
+
+
 ### Vagrant
  I use Vagrant in this project.
  Synch with NFS dir -> ./
