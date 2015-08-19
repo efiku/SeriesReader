@@ -8,5 +8,5 @@ install:
 	make test
 
 test:
-	bin/phpunit --testdox
+	bin/phpunit --testdox --coverage-html
 base:
