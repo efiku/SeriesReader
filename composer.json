@@ -1,5 +1,5 @@
 {
-  "name": "efik/SeriesReader",
+  "name": "efiku/SeriesReader",
   "description": "Read Series file from csv file",
   "minimum-stability": "dev",
   "license": "MIT",
@@ -11,8 +11,10 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "twig/twig": "^2.0@dev",
-    "phpunit/phpunit": "^5.0@dev"
+    "twig/twig": "^2.0@dev"
+  },
+  "require-dev": {
+       "phpunit/phpunit": "^5.0@dev"
   },
   "config": {
     "bin-dir": "bin/"
@@ -22,9 +24,5 @@
       "": "src/",
       "Tests\\": "tests/"
     }
-  },
-  "scripts": {
-    "post-update-cmd": "make test",
-    "post-install-cmd": "make test",
   }
 }
